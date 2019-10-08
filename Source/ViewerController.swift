@@ -58,6 +58,12 @@ public class ViewerController: UIViewController {
      Viewable background color
      */
     public var viewableBackgroundColor: UIColor = .black
+
+    /**
+     Keeps track of where the status bar should be light or not
+     */
+     public var shouldUseLightStatusBar = true
+
     /**
      Cache for the reused ViewableControllers
      */
@@ -87,11 +93,6 @@ public class ViewerController: UIViewController {
      Keeps track of where the status bar should be hidden or not
      */
     fileprivate var shouldHideStatusBar = false
-    
-    /**
-     Keeps track of where the status bar should be light or not
-     */
-    fileprivate var shouldUseLightStatusBar = true
     
     /**
      Critical button visibility state tracker, it's used to force the buttons to keep being hidden when they are toggled
@@ -551,7 +552,6 @@ extension ViewerController {
                     }
                     
                     self.shouldHideStatusBar = !self.buttonsAreVisible
-                    self.shouldUseLightStatusBar = true
                     
                     #if os(iOS)
                     self.setNeedsStatusBarAppearanceUpdate()
